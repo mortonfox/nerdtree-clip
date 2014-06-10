@@ -9,7 +9,24 @@ The following NERDTree plugins are included:
 
 ## Installation
 
-Copy the ```iterm_menu_item.vim``` and ```clip_path.vim``` files to ```~/.vim/nerdtree_plugin/``` (*nix) or ```~/vimfiles/nerdtree_plugin``` (Windows).
+### Pathogen
+
+Use the following commands:
+
+    cd ~/.vim/bundle
+    git clone https://github.com/mortonfox/nerdtree-iterm.git
+
+### Vundle
+
+Add the following to your vimrc:
+
+    Plugin 'mortonfox/nerdtree-iterm'
+
+Install with ```:PluginInstall```.
+
+### Manual Installation
+
+Copy the ```iterm_menu_item.vim```, ```clip_path.vim```, and ```ag_path.vim``` files to ```~/.vim/nerdtree_plugin/``` (*nix) or ```~/vimfiles/nerdtree_plugin``` (Windows).
 
 ## Usage
 
