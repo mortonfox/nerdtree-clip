@@ -5,7 +5,7 @@
 The following NERDTree plugins are included:
 * ```iterm_menu_item```: Adds a menu item to open the selected folder in iTerm. (i.e. open a shell window and cd to that folder)
 * ```clip_path```: Adds a menu item to copy the selected path to the clipboard.
-* ```ag_path```: Adds a menu item to search for a keyword or regex under the current path using [ag.vim](https://github.com/rking/ag.vim).
+* ```ag_path```: Adds a menu item to search for a keyword or regex under the selected path using [ag.vim](https://github.com/rking/ag.vim).
 
 ## Installation
 
