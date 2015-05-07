@@ -11,14 +11,14 @@ endif
 let g:loaded_nerdtree_ags_path = 1
 
 " Add menu item to NERD Tree to do an ag search under the selected path.
-call NERDTreeAddMenuItem({'text': 'vim-a(G)s search', 'shortcut': 'G', 'callback': 'NERDTreeAgsPath'})
+call NERDTreeAddMenuItem({'text': 'vim-ag(s) search', 'shortcut': 's', 'callback': 'NERDTreeAgsPath'})
 
 function! NERDTreeAgsPath()
     let curDirNode = g:NERDTreeDirNode.GetSelected()
     let path = curDirNode.path.str()
     
     call inputsave()
-    let search_arg = input('Search for? ')
+    let search_arg = input('vim-ags: search for? ')
     call inputrestore()
 
     if search_arg != ''
