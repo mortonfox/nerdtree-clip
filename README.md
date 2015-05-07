@@ -34,5 +34,5 @@ Copy the ```iterm_menu_item.vim```, ```clip_path.vim```, ```ag_path.vim```, and 
 In the NERDTree window:
 * Select the desired folder and then type ```m``` and ```i```. If the selection is on a file, this plugin will open iTerm on the enclosing folder. 
 * Select the desired folder or file and type ```m``` and ```b``` to copy its path to the clipboard.
-* Select the desired folder and then type ```m``` and ```g```. Enter a keyword or regex at the prompt to get a quickfix list of search results.
-* Select the desired folder and then type ```m``` and ```G```. Enter a keyword or regex at the prompt to get a vim-ags search results window.
+* Select the desired folder and then type ```m``` and ```g```. Enter a keyword or regex at the prompt to get a quickfix list of ag.vim search results.
+* Select the desired folder and then type ```m``` and ```s```. Enter a keyword or regex at the prompt to get a vim-ags search results window.
