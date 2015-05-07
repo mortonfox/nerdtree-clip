@@ -22,7 +22,7 @@ function! NERDTreeAgsPath()
     call inputrestore()
 
     if search_arg != ''
-        call ags#search(fnameescape(search_arg).' '.fnameescape(path))
+        call ags#search(fnameescape(search_arg).' '.fnameescape(path), '')
     endif
 endfunction
 
