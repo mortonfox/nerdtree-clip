@@ -2,7 +2,7 @@
 " File:        iterm_menu_item.vim
 " Description: plugin for NERD Tree that opens selected path in iTerm.
 " Maintainer:  Po Shan Cheah <morton@mortonfox.com>
-" Last Change: August 21, 2013
+" Last Change: June 22, 2016
 " ============================================================================
 if exists("g:loaded_nerdtree_iterm_menu")
     finish
@@ -45,11 +45,45 @@ let s:iterm_script .= "    end tell\n"
 let s:iterm_script .= "  end tell\n"
 let s:iterm_script .= "end run\n"
 
+" This script is for iTerm 2 2.9 beta and 3.x.
+let s:iterm_script_v3 = ''
+let s:iterm_script_v3 .= 'on run argv'."\n"
+let s:iterm_script_v3 .= '	tell application "iTerm"'."\n"
+let s:iterm_script_v3 .= '		set gottab to false'."\n"
+let s:iterm_script_v3 .= '		'."\n"
+let s:iterm_script_v3 .= '		-- If iTerm is not running, then activate will run it but we will not need to open a new tab later.'."\n"
+let s:iterm_script_v3 .= '		-- If iTerm is already running, activate brings it to the foreground, which we want to do anyway.'."\n"
+let s:iterm_script_v3 .= '		if it is not running then'."\n"
+let s:iterm_script_v3 .= '			set gottab to true'."\n"
+let s:iterm_script_v3 .= '		end if'."\n"
+let s:iterm_script_v3 .= '		activate'."\n"
+let s:iterm_script_v3 .= '		'."\n"
+let s:iterm_script_v3 .= '		-- Check if iTerm has a window open.'."\n"
+let s:iterm_script_v3 .= '		try'."\n"
+let s:iterm_script_v3 .= '			set tmp to current tab of current window'."\n"
+let s:iterm_script_v3 .= '		on error'."\n"
+let s:iterm_script_v3 .= '			-- If iTerm has no windows open, create one.'."\n"
+let s:iterm_script_v3 .= '			set curwindow to create window with default profile'."\n"
+let s:iterm_script_v3 .= '			set gottab to true'."\n"
+let s:iterm_script_v3 .= '		end try'."\n"
+let s:iterm_script_v3 .= '		'."\n"
+let s:iterm_script_v3 .= '		-- Create a tab if we have not already done so by running iTerm or creating a window.'."\n"
+let s:iterm_script_v3 .= '		if not gottab then'."\n"
+let s:iterm_script_v3 .= '			create tab with default profile current window'."\n"
+let s:iterm_script_v3 .= '		end if'."\n"
+let s:iterm_script_v3 .= '		'."\n"
+let s:iterm_script_v3 .= '		-- Finally, we can run the commands.'."\n"
+let s:iterm_script_v3 .= '		write current session of current window text "clear; cd \"" & item 1 of argv & "\""'."\n"
+let s:iterm_script_v3 .= '	end tell'."\n"
+let s:iterm_script_v3 .= 'end run'."\n"
+
 function! NERDTreeOpenIterm()
     let curDirNode = g:NERDTreeDirNode.GetSelected()
     let path = curDirNode.path.str()
 
-    let output = system('osascript - "'.path.'"', s:iterm_script)
+    let iterm_version = get(g:, 'nerdtree_iterm_iterm_version', 2)
+
+    let output = system('osascript - "'.path.'"', iterm_version >= 3 ? s:iterm_script_v3 : s:iterm_script)
     if v:shell_error != 0
 	redraw
 	echohl ErrorMsg
@@ -57,5 +91,3 @@ function! NERDTreeOpenIterm()
 	echohl None
     endif
 endfunction
-
-
