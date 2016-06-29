@@ -6,6 +6,8 @@ The following NERDTree plugins are included:
 
 * ```iterm_menu_item```: Adds a menu item to open the selected folder in iTerm.
   (i.e. open a shell window and cd to that folder)
+* ```terminal_menu_item```: Same as ```iterm_menu_item``` but opens a shell in
+  Terminal instead.
 * ```clip_path```: Adds a menu item to copy the selected path to the clipboard.
 * ```ag_path```: Adds a menu item to search for a keyword or regex under the
   selected path using [ag.vim](https://github.com/rking/ag.vim).
@@ -31,9 +33,7 @@ Install with ```:PluginInstall```.
 
 ### Manual Installation
 
-Copy the ```iterm_menu_item.vim```, ```clip_path.vim```, ```ag_path.vim```,
-and ```ags_path.vim``` files to ```~/.vim/nerdtree_plugin/``` (*nix)
-or ```~/vimfiles/nerdtree_plugin``` (Windows).
+Copy the ```iterm_menu_item.vim```, ```terminal_menu_item.vim```, ```clip_path.vim```, ```ag_path.vim```, and ```ags_path.vim``` files to ```~/.vim/nerdtree_plugin/``` (*nix) or ```~/vimfiles/nerdtree_plugin``` (Windows).
 
 ### iTerm2 3.x
 
@@ -52,6 +52,8 @@ In the NERDTree window:
 * Select the desired folder and then type ```m``` and ```i``` to open an iTerm
   session with that folder as the current directory. If the selection is on a
   file, this plugin will open iTerm on the enclosing folder.
+* Select the desired folder and then type ```m``` and ```t``` to open the
+  Terminal session.
 * Select the desired folder or file and type ```m``` and ```b``` to copy its
   path to the clipboard.
 * Select the desired folder and then type ```m``` and ```g```. Enter a keyword
